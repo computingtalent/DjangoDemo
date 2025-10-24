@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Homepage Login User{% endblock %}
+
+{% block content %}
+<h1>Testing Homepage Login User</h1>
+
+{% if user.is_authenticated %}
+    <p>Hello, <strong>{{ user.username }}</strong>! You are logged in.</p>
+    <p>This is a protected area where you can access your content.</p>
+    
+    <div style="margin-top: 2rem;">
+        <h2>Your Account Details:</h2>
+        <ul>
+            <li>Username: {{ user.username }}</li>
+            <li>Email: {{ user.email|default:"Not set" }}</li>
+            <li>Date Joined: {{ user.date_joined|date:"F d, Y" }}</li>
+        </ul>
+    </div>
+{% else %}
+    <p>You are not logged in.</p>
+    <p>Please <a href="{% url 'accounts:login' %}">login</a> or <a href="{% url 'accounts:register' %}">register</a> to access all features.</p>
+{% endif %}
+{% endblock %}
