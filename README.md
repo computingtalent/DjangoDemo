@@ -1,1 +1,3 @@
 # DjangoDemo
+
+- Django/memo
